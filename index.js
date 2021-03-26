@@ -8,6 +8,7 @@ const compiler = webpack(webpackConfig);
 const personagemController = require('/home/runner/DotingMeaslyAstronomy/src/controllers/PersonagemControllers');
 const musicaController = require('/home/runner/DotingMeaslyAstronomy/src/controllers/MusicaControllers');
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const watching = compiler.watch({
   // Example watchOptions
@@ -27,6 +28,7 @@ const watching = compiler.watch({
 });
 
 const app = express();
+app.use(cors()); 
 mongoose.connect('mongodb+srv://dwa:databaseteste123@cluster0.ysr3b.mongodb.net/DWA?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
@@ -63,7 +65,11 @@ app.get('/api/personagens', personagemController.show2);
 
 app.get('/api/p', personagemController.show3);
 
-app.get('/api/musicas/:_id', musicaController.show);
+app.get('/api/musicas/id/:_id', musicaController.show);
+
+app.get('/api/musicas/code/:code', musicaController.show4);
+
+app.get('/api/musicas/nome/:nome', musicaController.show5);
 
 app.get('/api/musicas', musicaController.show2);
 

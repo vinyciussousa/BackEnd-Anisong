@@ -16,7 +16,7 @@ module.exports = {
 		});
 	},
 	async show2(req, res) {
-		let Musicas = await Musica.find({ obra : req.query.obra }, function (err, doc) {
+		let Musicas = await Musica.find({ obra : {'$regex' : req.query.obra, '$options' : 'i'} }, function (err, doc) {
 			if (err){
 				console.log(err);
 				return res.json(err);
@@ -30,6 +30,31 @@ module.exports = {
 	async show3(req, res) {
 		let Musicas = await Musica.find();
 		return res.json(Musicas);
+	},
+	async show4(req, res) {
+		console.log("Entrou em show4")
+	let Musicas = await Musica.find({code : req.params.code}, function (err, doc) {
+			if (err){
+				console.log(err);
+				return res.json(err);
+			}
+			else {
+				console.log(doc);
+				return res.json(doc);
+			}
+		});
+	},
+	async show5(req, res) {
+		let Musicas = await Musica.find({nome : {'$regex' : req.params.nome, '$options' : 'i'}}, function (err, doc) {
+			if (err){
+				console.log(err);
+				return res.json(err);
+			}
+			else {
+				console.log(doc);
+				return res.json(doc);
+			}
+		});
 	},
 	async store(req, res) {
 		const Musicaa = await Musica.create(req.body);
