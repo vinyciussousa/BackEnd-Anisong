@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const compiler = webpack(webpackConfig);
 const personagemController = require('/home/runner/DotingMeaslyAstronomy/src/controllers/PersonagemControllers');
 const musicaController = require('/home/runner/DotingMeaslyAstronomy/src/controllers/MusicaControllers');
+const listaController = require('/home/runner/DotingMeaslyAstronomy/src/controllers/ListaControllers');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -75,17 +76,33 @@ app.get('/api/musicas', musicaController.show2);
 
 app.get('/api/m', musicaController.show3);
 
+app.get('/api/listas/id/:_id', listaController.show);
+
+app.get('/api/listas/code/:code', listaController.show4);
+
+app.get('/api/listas/nome/:nome', listaController.show5);
+
+app.get('/api/listas', listaController.show2);
+
+app.get('/api/l', listaController.show3);
+
 app.post('/api/personagens', personagemController.store);
 
 app.post('/api/musicas', musicaController.store);
+
+app.post('/api/listas', listaController.store);
 
 app.delete('/api/personagens', personagemController.remove);
 
 app.delete('/api/musicas', musicaController.remove);
 
+app.delete('/api/listas/:_id', listaController.remove);
+
 app.put('/api/personagens', personagemController.update);
 
 app.put('/api/musicas', musicaController.update);
+
+app.put('/api/listas', listaController.update);
 
 app.listen(config.PORT, function () {
   console.log(`App currently running; navigate to localhost:${config.PORT} in a web browser.`);
