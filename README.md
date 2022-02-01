@@ -17,7 +17,7 @@ Implementação do backend de um site que permite a pesquisa, criação de playl
 - Configuração da API em Node.js
 - Teste da API
 
-## Atividades 3
+### Atividades 3
 - Criação da Interface
 - Integração da API com a Interface
 - Definição das funções
