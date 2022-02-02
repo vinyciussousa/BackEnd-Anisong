@@ -10,6 +10,7 @@ Implementação do backend de um site que permite a pesquisa, criação de playl
 
 ### Atividades 1
 - Configuração do Banco de Dados
+- Configuração do Banco de Dados
 
 ### Atividades 2
 - Configuração da API em Node.js
